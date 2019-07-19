@@ -4,3 +4,20 @@
 _build
 *.install
 pkg/META
+
+_opam
+
+# BuckleScript
+node_modules
+ppx-import-*.tgz
+
+**/lib/bs
+**/lib/ocaml
+*.cmj
+*.bs.js
+*.mlast*
+*.mliast*
+
+ppx/
+dist/ppx-import-*.zip
+.deploy-status.env

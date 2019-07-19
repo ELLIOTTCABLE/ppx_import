@@ -1,0 +1,53 @@
+{
+  "name": "ppx-import",
+  "version": "15.0.0-pre.0",
+  "description": "A syntax extension for importing declarations from interface files (PACKAGED FOR BUCKLESCRIPT)",
+  "directories": {
+    "lib": "src",
+    "test": "src_test"
+  },
+  "devDependencies": {
+    "arch": "^2.1.1",
+    "archiver": "^2.1.1",
+    "bs-platform": "^5.0.7",
+    "cpy": "^7.0.1",
+    "foreach-cli": "^1.8.1",
+    "make-dir": "^1.3.0"
+  },
+  "peerDependencies": {
+    "bs-platform": ">=4.0.3"
+  },
+  "scripts": {
+    "setup": "opam switch create --working-dir --with-test ./ ocaml-base-compiler.4.02.3",
+    "build": "cp pkg/META{.in,} && ocaml pkg/build.ml native=true native-dynlink=false",
+    "clean": "make clean",
+    "prepare": "npm run clean && npm run build",
+    "preversion": "./scripts/preversion.sh",
+    "version": "./scripts/version.sh",
+    "test": "foreach -g 'examples/*.bs.js' -x 'node #{path}'",
+    "travis": "./scripts/travis.sh"
+  },
+  "files": [
+    "bsconfig.json",
+    "opam",
+    "src/**/*.ml",
+    "src/**/*.mli",
+    "src/**/*.bs.js",
+    "src_test/**/*.ml",
+    "src_test/**/*.mli",
+    "src_test/**/*.bs.js",
+    "pkg/**/*.ml",
+    "pkg/**/*.bs.js",
+    "pkg/META.in"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ELLIOTTCABLE/bs-sedlex.git"
+  },
+  "author": "Alain Frisch <alain.frisch@lexifi.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ELLIOTTCABLE/bs-sedlex/issues"
+  },
+  "homepage": "https://github.com/ELLIOTTCABLE/bs-sedlex#readme"
+}
